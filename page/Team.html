@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Table - Brand</title>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/popUpTeam.css">
+    <script src="/js/popUpTeam.js"></script>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-text mx-3"><span>GardaOto</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="dashboard.html"><i
+                                class="fas fa-tachometer-alt"></i><span></span>Company</a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link active" href="Team.html"><i
+                                class="fas fa-user"></i><span>Team</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="Service.html"><i
+                                class="fas fa-table"></i><span>Product</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="Benefit.html"><i
+                                class="far fa-user-circle"></i><span>Benefit</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="Fitur.html"><i
+                                class="fas fa-user-circle"></i><span>Fitur</span></a></li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="messages.html"><i
+                                class="fas fa-user-circle"></i><span>Messages</span></a></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0"
+                        id="sidebarToggle" type="button"></button></div>
+            </div>
+        </nav>
+
+        <div id="abc" style="overflow:hidden;">
+            <!-- Popup Div Starts Here -->
+            <div id="popupContact">
+                <!-- Contact Us Form -->
+                <form action="/teams" id="getTeam" method="put" name="form">
+                    <i id="close" class="fas fa-times" onclick="div_hide()"></i>
+                    <h2>Ubah Data Team</h2>
+                    <hr>
+                    <input id="Nim" name="Nim" placeholder="nim" type="text">
+                    <input id="Nama" name="Nama" placeholder="nama" type="text">
+                    <select id="Id_posisi" name="Id_posisi" placeholder="Posisi" type="item">
+                        <option value="1">FrontEnd</option>
+                        <option value="2">BackEnd</option>
+                    </select>
+                    <select id="Id_jurusan" name="Id_jurusan" placeholder="jurusan" type="item">
+                        <option value="1">Informatika</option>
+                        <option value="2">Akuntansi</option>
+                        <option value="3">Teknik Komputer</option>
+                        <option value="4">Ilmu Komputer</option>
+                        <option value="5">Ekonomi</option>
+                        <option value="6">Ilmu komunikasi</option>
+                    </select>
+                    <select id="Id_kelas" name="Id_kelas" placeholder="kelas" type="item">
+                        <option value="1">18-S1IF-01</option>
+                        <option value="2">18-S1IF-02</option>
+                        <option value="3">18-S1IF-03</option>
+                        <option value="4">18-S1IF-04</option>
+                        <option value="5">18-S1IF-05</option>
+                        <option value="6">18-S1IF-06</option>
+                        <option value="7">18-S1IF-07</option>
+                        <option value="8">18-S1IF-08</option>
+                        <option value="9">18-S1IF-09</option>
+                    </select>
+                    <textarea id="Keterangan" name="Keterangan" placeholder="Message"></textarea>
+                    <input id="Tgl_lahir" name="Tgl_lahir" type="date" placeholder="Tgl lahir">
+                    <a href="javascript:%20check_empty()" id="submit">Update</a>
+                </form>
+            </div>
+        </div>
+
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3"
+                            id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form
+                            class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group">
+                                <div class="input-group-append"></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link"
+                                    data-toggle="dropdown" aria-expanded="false" href="#"><i
+                                        class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu"
+                                    aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small"
+                                                type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0"
+                                                    type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        data-toggle="dropdown" aria-expanded="false" href="#"><i
+                                            class="fas fa-envelope fa-fw"></i><span
+                                            class="badge badge-danger badge-counter">7</span></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu" id="messages">
+                                        <h6 class="dropdown-header">messages center</h6>
+                                        <!-- data messages disini -->
+                                    </div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right"
+                                    aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
+                                        data-toggle="dropdown" aria-expanded="false" href="#"><span
+                                            class="d-none d-lg-inline mr-2 text-gray-600 small">admin</span><img
+                                            class="border rounded-circle img-profile"
+                                            src="/img/avatars/avatar1.jpeg"></a>
+                                    <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
+                                        <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation"
+                                        href="index.html"><i
+                                                class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+                <div class="container-fluid">
+                    <h3 class="text-dark mb-4">Team</h3>
+                    <div class="card shadow">
+                        <div class="card-header py-3">
+                            <p class="text-primary m-0 font-weight-bold">Team Info</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-12">
+                                    <div class="text-md-right dataTables_filter d-flex align-items-center justify-content-between"
+                                        id="dataTable_filter"><a href="/register.html"><button class="btn btn-primary"
+                                                type="button" style="margin-left: -15px;">Tambah
+                                                team</button></a><label><input type="search"
+                                                class="form-control form-control-sm mt-2" aria-controls="dataTable"
+                                                placeholder="Search"></label></div>
+                                </div>
+                            </div>
+                            <div class="table-responsive table mt-2" id="dataTable" role="grid"
+                                aria-describedby="dataTable_info">
+                                <table class="table my-0" id="dataTable">
+                                    <thead>
+                                        <tr>
+                                            <th>Foto</th>
+                                            <th>Name</th>
+                                            <th>Position</th>
+                                            <th>Keterangan</th>
+                                            <th>Nim</th>
+                                            <th>Tanggal lahir</th>
+                                            <th style="width: 150px !important;">Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody id="dataTeam">
+                                        <!-- data Teams disini -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="row">
+                                <div class="col-12">
+                                    <nav
+                                        class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
+                                        <ul class="pagination">
+                                            <li class="page-item disabled"><a class="page-link" href="#"
+                                                    aria-label="Previous"><span aria-hidden="true">«</span></a></li>
+                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
+                                                        aria-hidden="true">»</span></a></li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="bg-white sticky-footer">
+
+            </footer>
+        </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
+    </div>
+    <script src="/js/jquery.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="/js/theme.js"></script>
+    <script>
+        fetch('/teams')
+            .then(res => res.json()
+            )
+            .then(res => {
+                dataTeam = document.getElementById('dataTeam')
+                res.values.forEach(data => {
+                    dataTeam.innerHTML += `
+                <tr>
+				<td><img class="rounded-circle mr-2" width="30" height="30" src="/img/avatars/avatar1.jpeg"></td>
+                <td>`+ data.Nama + `</td>
+                <td>`+ data.Id_posisi + `</td>
+                <td>`+ data.Keterangan + `</td>
+                <td>`+ data.Nim + `</td>
+                <td>`+ data.Tgl_lahir + `</td>
+                <td style="width: 150px !important;"><button class="btn btn-primary" type="button" style="margin-left: -15px;" value="`+ data.Nim + `" onclick="div_show(` + data.Nim + `)">Edit</button><button class="btn btn-primary bg-danger" type="button" style="margin-left: 3px;" value="` + data.Nim + `" onclick="hapus(` + data.Nim + `)""">Delete</button></td>
+                </tr>`
+                })
+            });
+    </script>
+    <script>
+        fetch('/messages')
+            .then(res => res.json()
+            )
+            .then(res => {
+                pesan = document.getElementById('messages')
+                res.values.forEach(data => {
+                    pesan.innerHTML += `<a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle"
+                                                    src="/img/avatars/avatar4.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>`+ data.Isi_massages + `</span></div>
+                                                <p class="small text-gray-500 mb-0">`+ data.Email + `</p>
+                                            </div>
+                                        </a>`
+                });
+            });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,59 @@
+/*		Navbar		*/
+.navbar{
+	position: absolute;
+	top: 0;
+	left: 0;
+	background-image: linear-gradient(to right, rgb(41, 204, 226) 0%, rgb(60, 64, 198) 100%);
+	width: 100%;
+		-webkit-transition: .5s;
+		-o-transition: .5s;
+	transition: .5s;
+	z-index: 9;
+	padding: 0px 0px;
+}
+.navbar.fixed{
+	position: fixed;
+	left: 0;
+	top: 0;
+	background-color: #252525;
+	-webkit-box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, .2);
+			box-shadow: 0px 3px 8px 0px rgba(0, 0, 0, .2);
+}
+.navbar .navbar-toggler{
+	border-color: #fff;
+}
+.navbar .navbar-toggler .navbar-icon{
+	color: #fff;
+}
+.navbar .navbar-nav .menu .list-menu{
+	position: relative;
+	letter-spacing: .5px;
+	font-size: 15px;
+	font-weight: 600;
+	color: #fff;
+	padding: 25px 12px 25px 18px;
+	-webkit-transition: .4s;
+	-o-transition: .4s;
+	transition: .4s;
+}
+.navbar .navbar-nav .menu .list-menu:before{
+	position: absolute;
+	content: '';
+	bottom: 20px;
+	width: 0;
+	height: 2px;
+	background-color: rgb(210, 218, 226);
+}
+.navbar .navbar-nav .menu .list-menu.active:before, .navbar .navbar-nav .menu:hover .list-menu:before{
+	width: 25px;
+}
+.navbar .logo .section-text{
+	font-size: 23px;
+	color: #fff;
+	padding-top: 10px;
+}
+.navbar.fixed .logo .section-text{
+	font-size: 23px;
+	color: #fff;
+	padding-top: 10px;
+}

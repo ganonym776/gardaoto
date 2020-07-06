@@ -1,0 +1,47 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>Popup contact form</title>
+<link href="/css/popUpTeam.css" rel="stylesheet">
+<script src="/js/popUpTeam.js"></script>
+</head>
+<!-- Body Starts Here -->
+<body id="body" style="overflow:hidden;">
+<div id="abc">
+<!-- Popup Div Starts Here -->
+<div id="popupContact">
+<!-- Contact Us Form -->
+<form action="/teams" id="getTeam" method="post" name="form">
+<img id="close" src="images/3.png" onclick ="div_hide()">
+<h2>Contact Us</h2>
+<hr>
+<input id="Nim" name="Nim" placeholder="nim" type="text">
+<input id="Nama" name="Nama" placeholder="nama" type="text">
+<select id="Id_posisi" name="Id_posisi" placeholder="Posisi" type="item">
+    <option value="1">Blue</option>
+    <option value="2">Blue</option>
+    <option value="3">Blue</option>
+</select>  
+<select id="Id_jurusan" name="Id_jurusan" placeholder="jurusan" type="item">
+    <option value="1">Blue</option>
+    <option value="2">Blue</option>
+    <option value="3">Blue</option>
+</select>  
+<select id="Id_kelas" name="Id_kelas" placeholder="kelas" type="item">
+    <option value="1">Blue</option>
+    <option value="2">Blue</option>
+    <option value="3">Blue</option>
+</select>  
+<textarea id="Keterangan" name="Keterangan" placeholder="Message"></textarea>
+<a href="javascript:%20check_empty()" id="submit" value="">Update</a>
+</form>
+</div>
+<!-- Popup Div Ends Here -->
+</div>
+<!-- Display Popup Button -->
+<h1>Click Button To Popup Form Using Javascript</h1>
+<button id="popup" onclick="div_show()">Popup</button>
+</body>
+<!-- Body Ends Here -->
+</html>
