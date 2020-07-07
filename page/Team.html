@@ -7,7 +7,6 @@
     <title>Table - Brand</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/popUpTeam.css">
-    <script src="/js/popUpTeam.js"></script>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
@@ -44,38 +43,38 @@
             <!-- Popup Div Starts Here -->
             <div id="popupContact">
                 <!-- Contact Us Form -->
-                <form action="/teams" id="getTeam" method="put" name="form">
+                <form action="/team/" id="updateTeam()" method="put" name="form">
                     <i id="close" class="fas fa-times" onclick="div_hide()"></i>
                     <h2>Ubah Data Team</h2>
                     <hr>
                     <input id="Nim" name="Nim" placeholder="nim" type="text">
                     <input id="Nama" name="Nama" placeholder="nama" type="text">
-                    <select id="Id_posisi" name="Id_posisi" placeholder="Posisi" type="item">
-                        <option value="1">FrontEnd</option>
-                        <option value="2">BackEnd</option>
+                    <select id="Posisi" name="Posisi" placeholder="Posisi" type="item">
+                        <option value="FrontEnd">FrontEnd</option>
+                        <option value="BackEnd">BackEnd</option>
                     </select>
-                    <select id="Id_jurusan" name="Id_jurusan" placeholder="jurusan" type="item">
-                        <option value="1">Informatika</option>
-                        <option value="2">Akuntansi</option>
-                        <option value="3">Teknik Komputer</option>
-                        <option value="4">Ilmu Komputer</option>
-                        <option value="5">Ekonomi</option>
-                        <option value="6">Ilmu komunikasi</option>
+                    <select id="Jurusan" name="Jurusan" placeholder="jurusan" type="item">
+                        <option value="Informatika">Informatika</option>
+                        <option value="Akuntansi">Akuntansi</option>
+                        <option value="Teknik Komputer">Teknik Komputer</option>
+                        <option value="Ilmu Komputer">Ilmu Komputer</option>
+                        <option value="Ekonomi">Ekonomi</option>
+                        <option value="Ilmu komunikasi">Ilmu komunikasi</option>
                     </select>
-                    <select id="Id_kelas" name="Id_kelas" placeholder="kelas" type="item">
-                        <option value="1">18-S1IF-01</option>
-                        <option value="2">18-S1IF-02</option>
-                        <option value="3">18-S1IF-03</option>
-                        <option value="4">18-S1IF-04</option>
-                        <option value="5">18-S1IF-05</option>
-                        <option value="6">18-S1IF-06</option>
-                        <option value="7">18-S1IF-07</option>
-                        <option value="8">18-S1IF-08</option>
-                        <option value="9">18-S1IF-09</option>
+                    <select id="Kelas" name="Kelas" placeholder="kelas" type="item">
+                        <option value="18-S1IF-01">18-S1IF-01</option>
+                        <option value="18-S1IF-02">18-S1IF-02</option>
+                        <option value="18-S1IF-03">18-S1IF-03</option>
+                        <option value="18-S1IF-04">18-S1IF-04</option>
+                        <option value="18-S1IF-05">18-S1IF-05</option>
+                        <option value="18-S1IF-06">18-S1IF-06</option>
+                        <option value="18-S1IF-07">18-S1IF-07</option>
+                        <option value="18-S1IF-08">18-S1IF-08</option>
+                        <option value="18-S1IF-09">18-S1IF-09</option>
                     </select>
                     <textarea id="Keterangan" name="Keterangan" placeholder="Message"></textarea>
                     <input id="Tgl_lahir" name="Tgl_lahir" type="date" placeholder="Tgl lahir">
-                    <a href="javascript:%20check_empty()" id="submit">Update</a>
+                    <input href="javascript:%20check_empty()" id="submit" method="put" onclick="updateTeam(document.getElementById('Nim').value)">Update</input>
                 </form>
             </div>
         </div>
@@ -202,10 +201,11 @@
     <script src="/js/jquery.min.js"></script>
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="/js/popUpTeam.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="/js/theme.js"></script>
     <script>
-        fetch('/teams')
+        fetch('/team')
             .then(res => res.json()
             )
             .then(res => {
@@ -215,7 +215,7 @@
                 <tr>
 				<td><img class="rounded-circle mr-2" width="30" height="30" src="/img/avatars/avatar1.jpeg"></td>
                 <td>`+ data.Nama + `</td>
-                <td>`+ data.Id_posisi + `</td>
+                <td>`+ data.Posisi + `</td>
                 <td>`+ data.Keterangan + `</td>
                 <td>`+ data.Nim + `</td>
                 <td>`+ data.Tgl_lahir + `</td>

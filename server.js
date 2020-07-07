@@ -1,4 +1,6 @@
 const express = require('express');
+const multer = require('multer');
+var upload = multer({ dest: 'uploads/' })
 const bodyParser = require('body-parser');
 const app = express();
 const mysql = require('mysql');
@@ -27,23 +29,21 @@ conn.connect((err) => {
 });
 
 // fase login
-app.post('/login', function(request, response) {
-	var username = request.body.username;
-	var password = request.body.password;
+app.post('/login', function(req, res) {
+	var username = req.body.username;
+	var password = req.body.password;
 	if (username && password) {
-		connection.query('SELECT * FROM admins WHERE username = ? AND password = ?', [username, password], function(error, results, fields) {
+		conn.query('SELECT * FROM admins WHERE Username = ? AND Password = ?', [username, password], function(error, results, fields) {
 			if (results.length > 0) {
-				request.session.loggedin = true;
-				request.session.username = username;
 				res.redirect('/dashboard.html');
 			} else {
-				response.send('Incorrect Username and/or Password!');
+				res.send('Incorrect Username and/or Password!');
 			}			
-			response.end();
+			res.end();
 		});
 	} else {
-		response.send('Please enter Username and Password!');
-		response.end();
+		res.send('Please enter Username and Password!');
+		res.end();
 	}
 });
 
@@ -76,9 +76,9 @@ app.post('/messages', (req, res) => {
     });
 });
 
-//tampilkan semua data teams
-app.get('/teams', (req, res) => {
-    let sql = "SELECT * FROM teams";
+//tampilkan semua data team
+app.get('/team', (req, res) => {
+    let sql = "SELECT * FROM team";
     let query = conn.query(sql, (err, rows, fields) => {
         if (err) {
             throw err
@@ -88,9 +88,9 @@ app.get('/teams', (req, res) => {
     });
 });
 
-//tampilkan teams  berdasarkan id
-app.get('/teams/:id', (req, res) => {
-    let sql = "SELECT * FROM teams WHERE Nim=" + req.params.id+"";
+//tampilkan team  berdasarkan id
+app.get('/team/:id', (req, res) => {
+    let sql = "SELECT * FROM team WHERE Nim=" + req.params.id+"";
     let query = conn.query(sql, (err, rows, fields) => {
         if (err) {
             throw err
@@ -100,18 +100,19 @@ app.get('/teams/:id', (req, res) => {
     });
 });
 
-//Tambahkan teams baru
-app.post('/teams', (req, res) => {
+//Tambahkan team baru
+app.post('/team', upload.single('Foto'), (req, res, next) => {
     let data = {
         Nim: req.body.Nim,
         Nama: req.body.Nama,
-        Id_posisi: req.body.Id_posisi,
-        Id_jurusan: req.body.Id_jurusan,
-        Id_kelas: req.body.Id_kelas,
+        Foto: req.file.Foto,
+        Posisi: req.body.Posisi,
+        Jurusan: req.body.Jurusan,
+        Kelas: req.body.Kelas,
         Keterangan: req.body.Keterangan,
         Tgl_lahir: req.body.Tgl_lahir
     };
-    let sql = "INSERT INTO teams SET ?";
+    let sql = "INSERT INTO team SET ?";
     let query = conn.query(sql, data, (err, rows, fields) => {
         if (err) {
             throw err
@@ -121,21 +122,22 @@ app.post('/teams', (req, res) => {
     });
 });
 
-//Edit data teams berdasarkan id
-app.put('/teams/:id', (req, res) => {
-    let sql = "UPDATE teams SET Nama='" + req.body.Nama + "',  Id_posisi='" + req.body.Id_posisi + "', Id_jurusan='" + req.body.Id_jurusan + "',Id_kelas='" + req.body.Id_kelas + "', Keterangan='" + req.body.Keterangan + "', Tgl_lahir='" + req.body.Tgl_lahir + "' WHERE Nim =" + req.params.id;
+//Edit data team berdasarkan id
+app.put('/team/:id', (req, res) => {
+    let sql = "UPDATE team SET Nama='" + req.body.Nama + "',  Posisi='" + req.body.Posisi + "', Jurusan='" + req.body.Jurusan + "',Kelas='" + req.body.Kelas + "', Keterangan='" + req.body.Keterangan + "', Tgl_lahir='" + req.body.Tgl_lahir + "' WHERE Nim =" + req.params.id;
     let query = conn.query(sql, (err, rows, fields) => {
         if (err) {
             throw err
         } else {
+            res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
             response.ok(rows, res)
         }
     });
 });
 
-//Delete data teams berdasarkan id
-app.delete('/teams/:id', (req, res) => {
-    let sql = "DELETE FROM teams WHERE Nim=" + req.params.id + "";
+//Delete data team berdasarkan id
+app.delete('/team/:id', (req, res) => {
+    let sql = "DELETE FROM team WHERE Nim=" + req.params.id + "";
     let query = conn.query(sql, (err, rows, fields) => {
         if (err) {
             throw err

@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Register - Brand</title>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
     <link rel="stylesheet" href="/fonts/fontawesome-all.min.css">
 </head>
 
@@ -16,46 +17,85 @@
             <div class="card-body p-0">
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
-                        <div class="flex-grow-1 bg-register-image d-flex align-items-start justify-content-center" style="background-image: url(&quot;assets/img/dogs/image2.jpeg&quot;);"><button class="btn btn-primary mt-3" type="button" style="margin-top: 0;margin-right: 0px;">Upload</button></div>
+                        <div class="flex-grow-1 bg-register-image d-flex align-items-start justify-content-center"
+                            style="background-image: url(&quot;/img/dogs/image2.jpeg&quot;);"><button
+                                class="btn btn-primary mt-3" type="button"
+                                style="margin-top: 0;margin-right: 0px;">Upload</button></div>
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Create an Account!</h4>
                             </div>
-                            <form class="user" action="/teams" method="POST" id="createTeam">
+                            <form class="user" action="/team" method="POST" id="createTeam" enctype="multipart/form-data">
                                 <div class="form-group row">
-                                    <div class="col-12" style="height: 336px;width: 554px;"><input class="form-control form-control-user" type="text" id="exampleFirstName" placeholder="Nim" name="first_name"><input class="form-control form-control-user" type="text" id="exampleFirstName-1" placeholder="Nama"
-                                            name="first_name" style="margin: 1px;margin-top: 15px;"><input class="form-control form-control-user" type="text" id="exampleFirstName-3" placeholder="Keterangan" name="first_name" style="margin: 1px;margin-top: 15px;">
-                                        <div
-                                            class="dropdown" style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><button class="btn btn-primary dropdown-toggle text-dark bg-white" data-toggle="dropdown" aria-expanded="false" type="button" style="border-radius: 10rem;width: 100%;margin-top: -6px;">Posisi </button>
-                                            <div class="dropdown-menu"
-                                                role="menu"><a class="dropdown-item" role="presentation" value="1">First Item</a><a class="dropdown-item" role="presentation" value="2">Second Item</a><a class="dropdown-item" role="presentation" value="3">Third Item</a></div>
-                                    </div>
-                                    <div class="dropdown" style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><button class="btn btn-primary dropdown-toggle text-dark bg-white" data-toggle="dropdown" aria-expanded="false" type="button" style="border-radius: 10rem;width: 100%;margin-top: -6px;">Jurusan </button>
-                                        <div class="dropdown-menu"
-                                            role="menu"><a class="dropdown-item" role="presentation" value="1">First Item</a><a class="dropdown-item" role="presentation" value="2">Second Item</a><a class="dropdown-item" role="presentation" value="3">Third Item</a></div>
-                                    </div>
-                                    <div class="dropdown" style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><button class="btn btn-primary dropdown-toggle text-dark bg-white" data-toggle="dropdown" aria-expanded="false" type="button" style="border-radius: 10rem;width: 100%;margin-top: -6px;">Kelas </button>
-                                        <div class="dropdown-menu"
-                                            role="menu"><a class="dropdown-item" role="presentation" value="1">First Item</a><a class="dropdown-item" role="presentation" value="2">Second Item</a><a class="dropdown-item" role="presentation" value="3">Third Item</a></div>
+                                    <div class="col-12" style="height: 336px;width: 554px;"><input
+                                            class="form-control form-control-user" type="text" id="Nim"
+                                            placeholder="Nim" name="Nim"><input class="form-control form-control-user"
+                                            type="text" id="Nama" placeholder="Nama" name="Nama"
+                                            style="margin: 1px;margin-top: 15px;"><input
+                                            class="form-control form-control-user" type="text" id="Keterangan"
+                                            placeholder="Keterangan" name="Keterangan"
+                                            style="margin: 1px;margin-top: 15px;">
+                                        <div class="dropdown"
+                                            style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><select
+                                                class="btn btn-primary dropdown-toggle text-dark bg-white"
+                                                data-toggle="dropdown" aria-expanded="false" id="Posisi" name="Posisi"
+                                                placeholder="Posisi" type="item"
+                                                style="border-radius: 10rem;width: 100%;margin-top: -6px;">
+                                                <option value="FrontEnd">FrontEnd</option>
+                                                <option value="BackEnd">BackEnd</option>
+                                            </select>
+                                        </div>
+                                        <div class="dropdown"
+                                            style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><select
+                                                class="btn btn-primary dropdown-toggle text-dark bg-white"
+                                                data-toggle="dropdown" aria-expanded="false" id="Jurusan" name="Jurusan"
+                                                placeholder="jurusan" type="item"
+                                                style="border-radius: 10rem;width: 100%;margin-top: -6px;">
+                                                <option value="Informatika">Informatika</option>
+                                                <option value="Akuntansi">Akuntansi</option>
+                                                <option value="Teknik Komputer">Teknik Komputer</option>
+                                                <option value="Ilmu Komputer">Ilmu Komputer</option>
+                                                <option value="Ekonomi">Ekonomi</option>
+                                                <option value="Ilmu komunikasi">Ilmu komunikasi</option>
+                                            </select>
+                                        </div>
+                                        <div class="dropdown"
+                                            style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><select
+                                                class="btn btn-primary dropdown-toggle text-dark bg-white"
+                                                data-toggle="dropdown" aria-expanded="false" id="Kelas" name="Kelas"
+                                                placeholder="kelas" type="item"
+                                                style="border-radius: 10rem;width: 100%;margin-top: -6px;">
+                                                <option value="18-S1IF-01">18-S1IF-01</option>
+                                                <option value="18-S1IF-02">18-S1IF-02</option>
+                                                <option value="18-S1IF-03">18-S1IF-03</option>
+                                                <option value="18-S1IF-04">18-S1IF-04</option>
+                                                <option value="18-S1IF-05">18-S1IF-05</option>
+                                                <option value="18-S1IF-06">18-S1IF-06</option>
+                                                <option value="18-S1IF-07">18-S1IF-07</option>
+                                                <option value="18-S1IF-08">18-S1IF-08</option>
+                                                <option value="18-S1IF-09">18-S1IF-09</option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
+                                            type="date" id="Tgl_lahir" placeholder="Tgl_lahir" name="Tgl_lahir"></div>
+                                            <input type="file" id="Foto" name="Foto" />
+                                </div><button class="btn btn-primary btn-block text-white btn-user"
+                                    type="submit">Register Teams</button>
+                                <hr>
+                                <hr>
+                            </form>
+                            <div class="text-center"></div>
+                            <div class="text-center"></div>
                         </div>
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user" type="password" id="examplePasswordInput" placeholder="Username" name="password"></div>
-                            <div class="col-sm-6"><input class="form-control form-control-user" type="password" id="exampleRepeatPasswordInput" placeholder="Password" name="password_repeat"></div>
-                        </div><button class="btn btn-primary btn-block text-white btn-user" type="submit">Register Teams</button>
-                        <hr>
-                        <hr>
-                        </form>
-                        <div class="text-center"></div>
-                        <div class="text-center"></div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>

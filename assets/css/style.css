@@ -51,8 +51,8 @@ ul, li{
 	padding-bottom: 10px;
   line-height: 20px;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgb(123, 115, 199)), to(rgb(120, 103, 196)));
-	background: -webkit-linear-gradient(top, rgb(244, 245, 248) 30%, rgb(151, 168, 214) 100%);
-	background: -o-linear-gradient(top, rgb(165, 32, 32) 30%, rgb(105, 117, 231) 100%);
+	background: -webkit-linear-gradient(top, rgb(123, 250, 140) 30%, rgb(84, 236, 122) 100%);
+	background: -o-linear-gradient(top, rgb(165, 32, 32) 30%, rgb(5, 173, 5) 100%);
 	background: transparent, linear-gradient(to bottom, #fff 30%, #fff 100%);
 	-webkit-background-clip: text;
 			background-clip: text;
@@ -133,7 +133,7 @@ ul, li{
 	letter-spacing: .5px;
 	font-size: 15px;
 	font-weight: 600;
-	color: #fff;
+	color: rgb(7, 207, 84);
 	padding: 25px 12px 25px 18px;
 	-webkit-transition: .4s;
 	-o-transition: .4s;
@@ -478,7 +478,7 @@ section{
 
 /*Product*/
 #Product{
-  padding: 100 30 0 30;
+  padding-top: 100;
   background: #091f85;
 }
 .Product-badge {
@@ -486,7 +486,7 @@ section{
   background-color: #b8a227;
   align-items: center;
 	font-weight: 700;
-	padding: 5px 10px;
+	padding: 5px 0;
 	border-radius: 5px;
 	margin-bottom: 10px;
 	display: inline-block;
@@ -508,9 +508,10 @@ section{
   border: 2px solid #bf925b33;
   background: rgba(255, 255, 255, 0.075);
   border-radius: 25px;
-  padding: 20px;
+  height: 400px;
+  padding: 10px;
 	text-align: center;
-	margin: 30px 0 0;
+	margin-top: 30px;
 	box-shadow: 0 0 0px #999;
 }
 .Product-item:hover {
@@ -529,7 +530,7 @@ section{
 }
 .Product-item i {
 	color: #bf925b;
-	font-size:50px;
+	font-size:30px;
 	margin-bottom: 20px;
 }
 .Product-item h3 {
@@ -540,6 +541,96 @@ section{
 .Product-item p {
 	line-height: 2;
   color: #fff;
+}
+@media(max-width:768px){
+  .Product-title {
+    font-size: 4vw;
+    text-align: center;
+    font-weight: 500;
+    color: rgb(190, 205, 235);
+  }
+  .Product-badge {
+    color: white;
+    background-color: #b8a227;
+    align-items: center;
+    font-weight: 300;
+    padding: 5px 0px;
+    border-radius: 5px;
+    margin: 10px;
+    display: inline-block;
+  }
+  .Product-item i {
+    color: #bf925b;
+    font-size:20px;
+    margin-bottom: 20px;
+  }
+  .Product-item h3 {
+    font-weight: 300;
+    margin: 20px 0;
+    color: #fff;
+  }
+  .Product-item p {
+    line-height: 2;
+    color: #fff;
+  }
+}
+
+/* Team slide */
+#Team {
+  padding: 50px 0 ;
+  background: #e3edf0;
+
+}
+.Team-title {
+  font-size: 4vw;
+  text-align: center;
+  font-weight: 800;
+  color: rgb(190, 205, 235);
+}
+.Team-item {
+  border: 2px solid #4b4b4ba9;
+  border-radius: 25px;
+  height: 300px;
+  padding: 10px;
+	text-align: center;
+	margin-top: 30px;
+	box-shadow: 0 0 0px #999;
+}
+.Team-item2 {
+  margin-top: 100px;
+  height: 300px;
+  width:150px;
+	text-align: center;
+	box-shadow: 0 0 0px #999;
+}
+.Team-item img .img2{
+  background-position: center top;
+  width: 90px;
+  height: 90px;
+  border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.384);
+}
+.Team-item img .img{
+  background-position: center top;
+  /* width: 250px;
+  height: 250px; */
+  border-radius: 100%;
+  box-shadow: rgba(0, 0, 0, 0.384);
+}
+.Team-item h2{
+  font-size: 16px;
+  font-weight: 500;
+  color: #000;
+}
+.Team-item h3{
+  font-size: 13px;
+  margin-top:-5px;
+  word-spacing: 1;
+  color: #000;
+}
+.Team-item p{
+  font-size: 16px;
+  color: #000;
 }
 
 

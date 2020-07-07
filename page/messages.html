@@ -16,7 +16,6 @@
         <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
             <div class="container-fluid d-flex flex-column p-0">
                 <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
-                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-laugh-wink"></i></div>
                     <div class="sidebar-brand-text mx-3"><span>GardaOto</span></div>
                 </a>
                 <hr class="sidebar-divider my-0">
@@ -70,55 +69,9 @@
                                             class="fas fa-envelope fa-fw"></i><span
                                             class="badge badge-danger badge-counter">7</span></a>
                                     <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
-                                        role="menu">
+                                        role="menu" id="messages">
                                         <h6 class="dropdown-header">alerts center</h6>
-                                        <a class="d-flex align-items-center dropdown-item" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle"
-                                                    src="assets/img/avatars/avatar4.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="font-weight-bold">
-                                                <div class="text-truncate"><span>Hi there! I am wondering if you can
-                                                        help me with a problem I've been having.</span></div>
-                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
-                                            </div>
-                                        </a>
-                                        <a class="d-flex align-items-center dropdown-item" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle"
-                                                    src="assets/img/avatars/avatar2.jpeg">
-                                                <div class="status-indicator"></div>
-                                            </div>
-                                            <div class="font-weight-bold">
-                                                <div class="text-truncate"><span>I have the photos that you ordered last
-                                                        month!</span></div>
-                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
-                                            </div>
-                                        </a>
-                                        <a class="d-flex align-items-center dropdown-item" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle"
-                                                    src="assets/img/avatars/avatar3.jpeg">
-                                                <div class="bg-warning status-indicator"></div>
-                                            </div>
-                                            <div class="font-weight-bold">
-                                                <div class="text-truncate"><span>Last month's report looks great, I am
-                                                        very happy with the progress so far, keep up the good
-                                                        work!</span></div>
-                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
-                                            </div>
-                                        </a>
-                                        <a class="d-flex align-items-center dropdown-item" href="#">
-                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle"
-                                                    src="assets/img/avatars/avatar5.jpeg">
-                                                <div class="bg-success status-indicator"></div>
-                                            </div>
-                                            <div class="font-weight-bold">
-                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is
-                                                        because someone told me that people say this to all dogs, even
-                                                        if they aren't good...</span></div>
-                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
-                                            </div>
-                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All
-                                            Alerts</a>
+                                        <!-- data messages disini -->
                                     </div>
                                 </div>
                                 <div class="shadow dropdown-list dropdown-menu dropdown-menu-right"
@@ -128,12 +81,12 @@
                             <li class="nav-item dropdown no-arrow" role="presentation">
                                 <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link"
                                         data-toggle="dropdown" aria-expanded="false" href="#"><span
-                                            class="d-none d-lg-inline mr-2 text-gray-600 small">Valerie Luna</span><img
+                                            class="d-none d-lg-inline mr-2 text-gray-600 small">admin</span><img
                                             class="border rounded-circle img-profile"
-                                            src="assets/img/avatars/avatar1.jpeg"></a>
+                                            src="/img/avatars/avatar1.jpeg"></a>
                                     <div class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu">
                                         <div class="dropdown-divider"></div><a class="dropdown-item" role="presentation"
-                                            href="#"><i
+                                        href="index.html"><i
                                                 class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a>
                                     </div>
                                 </div>
@@ -156,9 +109,10 @@
                             </div>
                             <div class="table-responsive table mt-2" id="dataTable" role="grid"
                                 aria-describedby="dataTable_info">
-                                <table class="table my-0" id="dataTable">
+                                <table class="table my-0" id="dataMessages">
                                     <thead>
                                         <tr>
+                                            <th>No.</th>
                                             <th>Email</th>
                                             <th>Title</th>
                                             <th>Isi</th>
@@ -166,13 +120,7 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            <td>Tokyo</td>
-                                            <td><button class="btn btn-danger text-center" type="submit"
-                                                    style="height: 25px;padding: 0px;width: 76px;">Button</button></td>
-                                        </tr>
+                                        <!-- Data Messages -->
                                     </tbody>
                                     <tfoot>
                                         <tr></tr>
@@ -203,8 +151,48 @@
     </div>
     <script src="/js/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
     <script src="/js/theme.js"></script>
+    <script>
+        fetch('/messages')
+            .then(res => res.json()
+            )
+            .then(res => {
+                dataMessages = document.getElementById('dataMessages')
+                res.values.forEach(data => {
+                    dataMessages.innerHTML += `
+                <tr>
+                <td>`+ data.Id_massages + `</td>
+                <td>`+ data.Email + `</td>
+                <td>`+ data.Judul_massages + `</td>
+                <td>`+data.Isi_massages+`</td>
+                <td><button class="btn btn-danger text-center" type="submit"
+                                                    style="height: 25px;padding: 0px;width: 76px;" value="` + data.Id_massages + `" onclick="hapus_massages(` + data.Id_massages + `)">Delete</button></td>
+                </tr>`
+                })
+            });
+    </script>
+    <script>
+        fetch('/messages')
+            .then(res => res.json()
+            )
+            .then(res => {
+                pesan = document.getElementById('messages')
+                res.values.forEach(data => {
+                    pesan.innerHTML += `<a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle"
+                                                    src="/img/avatars/avatar4.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>`+ data.Isi_massages + `</span></div>
+                                                <p class="small text-gray-500 mb-0">`+ data.Email + `</p>
+                                            </div>
+                                        </a>`
+                });
+            });
+    </script>
 </body>
 
 </html>

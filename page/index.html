@@ -42,9 +42,9 @@
 					</li>
 					<li class="menu ">
 						<a class="list-menu" href="kontak.html">Contact me</a>
-					<li class="menu ">
-						<a class="list-menu" href="dashboard.html">login</a>
 					</li>
+					<li class="menu ">
+						<a class="list-menu" href="login.html">login</a>
 					</li>
 				</ul>
 			</div>
@@ -116,7 +116,7 @@
 					<img data-aos="fade-right" src="https://source.unsplash.com/9l_326FISzk/600x200">
 				</div>
 			</div>
-			<div class="row profile-counter" data-aos="fade-up">
+			<div class="row profile-counter">
 				<div class="col-sm-3">
 					<h3>25</h3>
 					<p>YEARS EXPERIENCE</p>
@@ -141,9 +141,9 @@
 		<div id="Product" class="container">
 			<span class="Product-badge" data-aos="fade-up">Benefit</span>
 			<h2 class="Product-title" data-aos="fade-up">Kelebihan Memilih GardaOto</h2>
-				<div class="owl-carousel" id="prod">
-					<!--data product disini-->
-				</div>
+			<div class="owl-carousel owl-theme" id="prod">
+				<!--data jaminan disini-->
+			</div>
 		</div>
 
 
@@ -175,11 +175,24 @@
 				<div class="col-md-6 d-none d-md-block">
 					<span class="profile-badge" data-aos="fade-up">Service</span>
 					<br>
-					<img style="max-width: 400px; max-height: 600px; padding-bottom: 50px; margin-right:20px;" src="/img/foto2.png"
-						data-aos="fade-up">
+					<img style="max-width: 400px; max-height: 600px; padding-bottom: 50px; margin-right:20px;"
+						src="/img/foto2.png" data-aos="fade-up">
 				</div>
 				<div class="col-md-6 col-sm-12" id="dataService">
 					<!-- data products disini -->
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section id="Team">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					<h4 class="Team-title">Tim Developer</h4>
+					<div class="owl-carousel owl-theme" id="dataTim">
+						<!-- slide team -->
+					</div>
 				</div>
 			</div>
 		</div>
@@ -291,22 +304,58 @@
 						<p>`+ data.Deskripsi_layanan + `</p>
 					</div>`
 				});
-				$(".owl-carousel").owlCarousel({
-    margin:50,
-    autoPlay: true,
-    stagePadding: 50,
-    responsive:{
-      0:{
-          items:1
-      },
-      600:{
-          items:2
-      },
-      1000:{
-          items:3
-      }
-    }
-  });
+				$("#prod").owlCarousel({
+					margin: 10,
+					loop: true,
+					autoplay: true,
+					autoplayTimeout: 4000,
+					autoplayHoverPause: true,
+					stagePadding: 10,
+					responsive: {
+						0: {
+							items: 1
+						},
+						600: {
+							items: 2
+						},
+						1000: {
+							items: 3
+						}
+					}
+				});
+			});
+
+
+		fetch('/team')
+			.then(res => res.json()
+			)
+			.then(res => {
+				dataTim = document.getElementById('dataTim')
+				res.values.forEach(data => {
+					dataTim.innerHTML += `<div class="Team-item">
+							<img class="img" src=`+ data.Foto + `>
+							<h2>`+ data.Nama + `</h2>
+							<h3>`+ data.Posisi + `</h3>
+							<p>`+ data.Keterangan + `</p>
+						</div>`
+				});
+				$("#dataTim").owlCarousel({
+					margin: 20,
+					loop: true,
+					autoplay: true,
+					stagePadding: 20,
+					responsive: {
+						0: {
+							items: 2
+						},
+						600: {
+							items: 3
+						},
+						1000: {
+							items: 4
+						}
+					}
+				});
 			});
 
 		fetch('/products')
