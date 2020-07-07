@@ -27,7 +27,8 @@
                             <div class="text-center">
                                 <h4 class="text-dark mb-4">Create an Account!</h4>
                             </div>
-                            <form class="user" action="/team" method="POST" id="createTeam" enctype="multipart/form-data">
+                            <form role="form" class="user" action="/team" method="POST" id="createTeam"
+                                enctype="multipart/form-data">
                                 <div class="form-group row">
                                     <div class="col-12" style="height: 336px;width: 554px;"><input
                                             class="form-control form-control-user" type="text" id="Nim"
@@ -83,7 +84,7 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
                                             type="date" id="Tgl_lahir" placeholder="Tgl_lahir" name="Tgl_lahir"></div>
-                                            <input type="file" id="Foto" name="Foto" />
+                                    <input name="Foto" accept="image/*" type="file" id="Foto">
                                 </div><button class="btn btn-primary btn-block text-white btn-user"
                                     type="submit">Register Teams</button>
                                 <hr>

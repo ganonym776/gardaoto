@@ -1,6 +1,16 @@
+var path = require('path');
 const express = require('express');
 const multer = require('multer');
-var upload = multer({ dest: 'uploads/' })
+const storage = multer.diskStorage({
+    destination : path.join(__dirname + './assets/img/uploads'),
+    filename: function(req, file, cb){
+        cb(null, file.fieldname + '-' + Date.now() +
+        path.extname(file.originalname));
+    }
+});
+const upload = multer({
+    storage : storage
+}).single('Foto');
 const bodyParser = require('body-parser');
 const app = express();
 const mysql = require('mysql');
@@ -76,6 +86,18 @@ app.post('/messages', (req, res) => {
     });
 });
 
+//Delete data messages berdasarkan id
+app.delete('/messages/:id', (req, res) => {
+    let sql = "DELETE FROM messages WHERE Id_massages=" + req.params.id + "";
+    let query = conn.query(sql, (err, rows, fields) => {
+        if (err) {
+            throw err
+        } else {
+            response.ok(rows, res)
+        }
+    });
+});
+
 //tampilkan semua data team
 app.get('/team', (req, res) => {
     let sql = "SELECT * FROM team";
@@ -101,7 +123,7 @@ app.get('/team/:id', (req, res) => {
 });
 
 //Tambahkan team baru
-app.post('/team', upload.single('Foto'), (req, res, next) => {
+app.post('/team', upload, (req, res, next) => {
     let data = {
         Nim: req.body.Nim,
         Nama: req.body.Nama,
@@ -163,7 +185,7 @@ app.get('/products', (req, res) => {
 
 //tampilkan data product berdasarkan id
 app.get('/products/:id', (req, res) => {
-    let sql = "SELECT * FROM products WHERE Nim=" + req.params.id; +"";
+    let sql = "SELECT * FROM products WHERE Kd_product=" + req.params.id; +"";
     let query = conn.query(sql, (err, rows, fields) => {
         if (err) {
             throw err

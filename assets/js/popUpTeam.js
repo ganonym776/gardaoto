@@ -132,3 +132,145 @@ function updateBenefit(Id_layanan) {
                 swal("wiu.. wiuu..!", "the data have runaway!", "error");
         })
 }
+
+
+function fitur_show(Kd_jaminan) {
+    fetch('/jaminan/' + Kd_jaminan)
+        .then(res => res.json()
+        )
+        .then(res => {
+            console.log(res)
+            var Jaminan = res.values[0]
+            console.log(Jaminan)
+            $('input[name="Kd_jaminan"]').val(Jaminan.Kd_jaminan);
+            $('input[name="Nm_jaminan"]').val(Jaminan.Nm_jaminan);
+            $('textarea[name="Deskripsi_jaminan"]').val(Jaminan.Deskripsi_jaminan);
+        });
+    document.getElementById('abc').style.display = "block";
+}
+//Function to Hide Popup
+function div_hide() {
+    document.getElementById('abc').style.display = "none";
+}
+
+function hapus_fitur(Kd_jaminan) {
+    fetch('/jaminan/' + Kd_jaminan, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json()
+        )
+        .then(res => {
+            console.log(res)
+            if (res.status = 200)
+                swal("Good job!", "the data have been deleted!", "success").then(hapus => { document.location.reload() });
+            else
+                swal("wiu.. wiuu..!", "the data have runaway!", "error");
+        });
+}
+
+function updateBenefit(Kd_jaminan) {
+    var dataJaminan ={}
+    dataJaminan.Kd_jaminan = (document.getElementById("Kd_jaminan").value),
+    dataJaminan.Nm_jaminan = (document.getElementById("Nm_jaminan").value),
+    dataJaminan.Deskripsi_jaminan = (document.getElementById("Deskripsi_jaminan").value),
+    console.log(dataJaminan),
+    
+    fetch('/jaminan/' + Kd_jaminan, {
+        method: 'put', body: dataJaminan,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(res => {
+            if (res.status = 200)
+                swal("Good job!", "the data have been Modified!", "success").then(reload => { document.location.reload() });
+            else
+                swal("wiu.. wiuu..!", "the data have runaway!", "error");
+        })
+}
+
+
+
+
+function product_show(Kd_product) {
+    fetch('/products/' + Kd_product)
+        .then(res => res.json()
+        )
+        .then(res => {
+            console.log(res)
+            var product = res.values[0]
+            console.log(product)
+            $('input[name="Kd_product"]').val(product.Kd_product);
+            $('input[name="Nm_product"]').val(product.Nm_product);
+            $('textarea[name="Deskripsi_product"]').val(product.Deskripsi_product);
+        });
+    document.getElementById('abc').style.display = "block";
+}
+//Function to Hide Popup
+function div_hide() {
+    document.getElementById('abc').style.display = "none";
+}
+
+function hapus_fitur(Kd_product) {
+    fetch('/products/' + Kd_product, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json()
+        )
+        .then(res => {
+            console.log(res)
+            if (res.status = 200)
+                swal("Good job!", "the data have been deleted!", "success").then(hapus => { document.location.reload() });
+            else
+                swal("wiu.. wiuu..!", "the data have runaway!", "error");
+        });
+}
+
+function updateBenefit(Kd_product) {
+    var dataProduct ={}
+    dataProduct.Kd_product = (document.getElementById("Kd_product").value),
+    dataProduct.Nm_product = (document.getElementById("Nm_product").value),
+    dataProduct.Deskripsi_product = (document.getElementById("Deskripsi_product").value),
+    console.log(dataProduct),
+    
+    fetch('/products/' + Kd_product, {
+        method: 'put', body: dataProduct,
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      })
+        .then(res => res.json())
+        .then(res => {
+            if (res.status = 200)
+                swal("Good job!", "the data have been Modified!", "success").then(reload => { document.location.reload() });
+            else
+                swal("wiu.. wiuu..!", "the data have runaway!", "error");
+        })
+}
+
+
+
+function hapus_massages(Id_massages) {
+    fetch('/messages/' + Id_massages, {
+        method: "DELETE",
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+        .then(res => res.json()
+        )
+        .then(res => {
+            console.log(res)
+            if (res.status = 200)
+                swal("Good job!", "the data have been deleted!", "success").then(hapus => { document.location.reload() });
+            else
+                swal("wiu.. wiuu..!", "the data have runaway!", "error");
+        });
+}
