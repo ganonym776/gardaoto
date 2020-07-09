@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/popUpTeam.css">
+</head>
+
+<body>
+    <div class="row">
+        <div class="col-md-12 d-flex align-items-center" style="background-color: transparent;">
+            <form action="/product/" id="updateProduct(Kd_product)" method="put" name="form">
+                <i id="close" class="fas fa-times" onclick="div_hide()"></i>
+                <h2>Ubah Data Layanan</h2>
+                <hr>
+                <input id="Kd_product" name="Kd_product" placeholder="Kd_product" type="text" disabled>
+                <input id="Nm_product" name="Nm_product" placeholder="Nm_product" type="text">
+                <textarea id="Deskripsi_product" name="Deskripsi_product" placeholder="Message"></textarea>
+                <input id="submit" method="put"
+                    onclick="updateProduct(document.getElementById('Kd_product').value)"></input>
+            </form>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

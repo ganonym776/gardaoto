@@ -197,6 +197,7 @@ function updateBenefit(Kd_jaminan) {
 
 
 function product_show(Kd_product) {
+    window.location='formUpdateData.html';
     fetch('/products/' + Kd_product)
         .then(res => res.json()
         )
