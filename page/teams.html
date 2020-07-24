@@ -48,7 +48,7 @@
     </div>
   </nav>
 
-  <section id="Team">
+  <section id="Team" style="background-color: white;"">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -121,8 +121,11 @@
       .then(res => {
         dataTim = document.getElementById('dataTim')
         res.values.forEach(data => {
-          dataTim.innerHTML += `<div class="col-md-4 Team-item2">
-							<img class="img2" src="/img/14.jpg">
+          data.Foto=data.Foto==null?'download.jpg':data.Foto;
+          dataTim.innerHTML += `<div class="col-md-4 team-item2">
+            <div class='rounded-class'>
+              <img class="img2" src="/img/uploads/`+data.Foto+`" width="200px" height="200px">
+            </div>
 							<h2>`+ data.Nama + `</h2>
 							<h3>`+ data.Posisi + `</h3>
 							<p>`+ data.Keterangan + `</p>

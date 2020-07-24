@@ -124,8 +124,8 @@
                                 <div class="col-12">
                                     <div class="text-md-right dataTables_filter d-flex align-items-center justify-content-between"
                                         id="dataTable_filter"><button class="btn btn-primary" type="button"
-                                            style="margin-left: -15px;">Tambah fitur</button><label><input
-                                                type="search" class="form-control form-control-sm mt-2"
+                                            style="margin-left: -15px;">Tambah fitur</button><label>
+                                                <input type="search" onkeypress="cariJaminan(this.value)" name="search" class="form-control form-control-sm mt-2"
                                                 aria-controls="dataTable" placeholder="Search"></label></div>
                                 </div>
                             </div>
@@ -146,31 +146,11 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <nav
-                                        class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a class="page-link" href="#"
-                                                    aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
-                                                        aria-hidden="true">»</span></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
             </div>
-            <footer class="bg-white sticky-footer">
-                <div class="container my-auto">
-                    <div class="text-center my-auto copyright"><span>Copyright © Brand 2020</span></div>
-                </div>
-            </footer>
         </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a>
     </div>
     <script src="/js/jquery.min.js"></script>
@@ -190,7 +170,7 @@
                     dataFitur.innerHTML += `
                 <tr>
                 <td>`+ data.Kd_jaminan + `</td>
-				<td><img class="rounded-circle mr-2" width="30" height="30" src="/img/avatars/avatar1.jpeg"></td>
+				<td><img class="rounded-class" src="/img/`+data.Gmbr_jaminan+`" width="60px" height="60px"></td>
                 <td>`+ data.Nm_jaminan + `</td>
                 <td>`+ data.Deskripsi_jaminan + `</td>
                 <td style="width: 150px !important;"><button class="btn btn-primary" type="button" style="margin-left: -15px;" value="`+ data.Kd_jaminan + `" onclick="fitur_show(` + data.Kd_jaminan + `)">Edit</button><button class="btn btn-primary bg-danger" type="button" style="margin-left: 3px;" value="` + data.Kd_jaminan + `" onclick="hapus_fitur(` + data.Kd_jaminan + `)">Delete</button></td>
@@ -217,6 +197,28 @@
                                         </a>`
                 });
             });
+    </script>
+    <script>
+        function cariJaminan(Kd_jaminan){
+            fetch('/jaminan/'+Kd_jaminan)
+            .then(res => res.json()
+            )
+            .then(res => {
+                pesan = document.getElementById('messages')
+                res.values.forEach(data => {
+                    pesan.innerHTML += `<a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle"
+                                                    src="/img/avatars/avatar4.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>`+ data.Isi_massages + `</span></div>
+                                                <p class="small text-gray-500 mb-0">`+ data.Email + `</p>
+                                            </div>
+                                        </a>`
+                });
+            });
+        };
     </script>
 </body>
 

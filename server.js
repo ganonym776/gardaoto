@@ -2,7 +2,9 @@ var path = require('path');
 const express = require('express');
 const multer = require('multer');
 const storage = multer.diskStorage({
-    destination : path.join(__dirname + './assets/img/uploads'),
+    destination : function(req, file, cb){
+        cb(null, './assets/img/uploads/');
+    },
     filename: function(req, file, cb){
         cb(null, file.fieldname + '-' + Date.now() +
         path.extname(file.originalname));
@@ -10,7 +12,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({
     storage : storage
-}).single('Foto');
+});
 const bodyParser = require('body-parser');
 const app = express();
 const mysql = require('mysql');
@@ -99,13 +101,14 @@ app.delete('/messages/:id', (req, res) => {
 });
 
 //tampilkan semua data team
-app.get('/team', (req, res) => {
+app.get('/team', (req, res, next) => {
     let sql = "SELECT * FROM team";
     let query = conn.query(sql, (err, rows, fields) => {
+        
         if (err) {
             throw err
         } else {
-            response.ok(rows, res)
+            response.ok(rows, res)            
         }
     });
 });
@@ -123,11 +126,11 @@ app.get('/team/:id', (req, res) => {
 });
 
 //Tambahkan team baru
-app.post('/team', upload, (req, res, next) => {
+app.post('/team', upload.single('Foto'), (req, res, next) => {
     let data = {
         Nim: req.body.Nim,
         Nama: req.body.Nama,
-        Foto: req.file.Foto,
+        Foto: req.file.filename,
         Posisi: req.body.Posisi,
         Jurusan: req.body.Jurusan,
         Kelas: req.body.Kelas,
@@ -147,11 +150,11 @@ app.post('/team', upload, (req, res, next) => {
 //Edit data team berdasarkan id
 app.put('/team/:id', (req, res) => {
     let sql = "UPDATE team SET Nama='" + req.body.Nama + "',  Posisi='" + req.body.Posisi + "', Jurusan='" + req.body.Jurusan + "',Kelas='" + req.body.Kelas + "', Keterangan='" + req.body.Keterangan + "', Tgl_lahir='" + req.body.Tgl_lahir + "' WHERE Nim =" + req.params.id;
-    let query = conn.query(sql, (err, rows, fields) => {
+    let query = conn.query(sql, (err, rows, results, fields) => {
         if (err) {
-            throw err
+            
         } else {
-            res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
+            // res.send(JSON.stringify({"status": 200, "error": null, "response": results}));
             response.ok(rows, res)
         }
     });
@@ -196,8 +199,8 @@ app.get('/products/:id', (req, res) => {
 });
 
 //Tambahkan data product baru
-app.post('/products', (req, res) => {
-    let data = { Nm_product: req.body.Nm_product, Deskripsi_product: req.body.Deskripsi_product, Tgl_terbit: req.body.Tgl_terbit };
+app.post('/products', upload.single('Gmbr_product'), (req, res) => {
+    let data = { Nm_product: req.body.Nm_product, Gmbr_product:req.body.path, Deskripsi_product: req.body.Deskripsi_product, Tgl_terbit: req.body.Tgl_terbit };
     let sql = "INSERT INTO products SET ?";
     let query = conn.query(sql, data, (err, rows, fields) => {
         if (err) {
@@ -210,10 +213,10 @@ app.post('/products', (req, res) => {
 
 //Edit data product berdasarkan id
 app.put('/products/:Id', (req, res) => {
-    let sql = "UPDATE products SET Nm_product= " + req.body.Nm_product + ", Deskripsi_product= " + req.body.Deskripsi_product + ",Tgl_terbit=" + req.body.Tgl_terbit + " where Kd_product="+req.params.Id+"";
+    let sql = "UPDATE products SET Nm_product= '" + req.body.Nm_product + "', Deskripsi_product= '" + req.body.Deskripsi_product + "',Tgl_terbit='" + req.body.Tgl_terbit + "' where Kd_product="+req.params.Id;
     let query = conn.query(sql, (err, rows, fields) => {
         if (err) {
-            throw err
+            
         } else {
             response.ok(rows, res)
         }
@@ -309,10 +312,10 @@ app.post('/layananplus', (req, res) => {
 
 //Edit data jaminan berdasarkan kode jaminan
 app.put('/jaminan/:Kd_jaminan', (req, res) => {
-    let sql = "UPDATE jaminan SET Nm_jaminan='" + req.body.Nm_jaminan + "', Deskripsi_jaminan='" + req.body.Deskripsi_jaminan + "', WHERE Kd_jaminan =" + req.params.Kd_jaminan+"";
+    let sql = "UPDATE jaminan SET Nm_jaminan='" + req.body.Nm_jaminan + "', Deskripsi_jaminan='" + req.body.Deskripsi_jaminan + "' WHERE Kd_jaminan =" + req.params.Kd_jaminan;
     let query = conn.query(sql, (err, rows, fields) => {
         if (err) {
-            throw err
+            
         } else {
             response.ok(rows, res)
         }
@@ -320,11 +323,11 @@ app.put('/jaminan/:Kd_jaminan', (req, res) => {
 });
 
 //Edit data layananplus berdasarkan id jaminan
-app.put('layananplus/:Id_layanan', (req, res) => {
-    let sql = "UPDATE layanan SET Nm_layanan='" + req.body.Nm_layanan + "', Deskripsi_layanan='" + req.body.Deskripsi_layanan + "', WHERE Id_layanan =" + req.params.Id_layanan+"";
+app.put('/layananplus/:Id_layanan', (req, res) => {
+    let sql = "UPDATE layananplus SET Nm_layanan='" + req.body.Nm_layanan + "', Deskripsi_layanan='" + req.body.Deskripsi_layanan + "' WHERE Id_layanan =" + req.params.Id_layanan;
     let query = conn.query(sql, (err, rows, fields) => {
         if (err) {
-            throw err
+            
         } else {
             response.ok(rows, res)
         }

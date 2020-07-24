@@ -56,10 +56,10 @@ function updateTeam(Nim) {
     deta.Kelas = (document.getElementById("Kelas").value),
     deta.Keterangan = (document.getElementById("Keterangan").value),
     deta.Tgl_lahir = document.getElementById("Tgl_lahir").value,
-    console.log(deta),
+    console.log(deta)
     
     fetch('/team/' + Nim, {
-        method: 'put', body: deta,
+        method: 'put', body:JSON.stringify(deta),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -119,7 +119,7 @@ function updateBenefit(Id_layanan) {
     console.log(datalayanan),
     
     fetch('/layananplus/' + Id_layanan, {
-        method: 'put', body: datalayanan,
+        method: 'put', body:JSON.stringify(datalayanan),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -171,7 +171,7 @@ function hapus_fitur(Kd_jaminan) {
         });
 }
 
-function updateBenefit(Kd_jaminan) {
+function updateJaminan(Kd_jaminan) {
     var dataJaminan ={}
     dataJaminan.Kd_jaminan = (document.getElementById("Kd_jaminan").value),
     dataJaminan.Nm_jaminan = (document.getElementById("Nm_jaminan").value),
@@ -179,7 +179,7 @@ function updateBenefit(Kd_jaminan) {
     console.log(dataJaminan),
     
     fetch('/jaminan/' + Kd_jaminan, {
-        method: 'put', body: dataJaminan,
+        method: 'put', body:JSON.stringify(dataJaminan),
         headers: {
             'Content-Type': 'application/json'
         }
@@ -197,7 +197,6 @@ function updateBenefit(Kd_jaminan) {
 
 
 function product_show(Kd_product) {
-    window.location='formUpdateData.html';
     fetch('/products/' + Kd_product)
         .then(res => res.json()
         )
@@ -216,7 +215,7 @@ function div_hide() {
     document.getElementById('abc').style.display = "none";
 }
 
-function hapus_fitur(Kd_product) {
+function hapus_product(Kd_product) {
     fetch('/products/' + Kd_product, {
         method: "DELETE",
         headers: {
@@ -234,7 +233,7 @@ function hapus_fitur(Kd_product) {
         });
 }
 
-function updateBenefit(Kd_product) {
+function updateProduct(Kd_product) {
     var dataProduct ={}
     dataProduct.Kd_product = (document.getElementById("Kd_product").value),
     dataProduct.Nm_product = (document.getElementById("Nm_product").value),
@@ -242,7 +241,7 @@ function updateBenefit(Kd_product) {
     console.log(dataProduct),
     
     fetch('/products/' + Kd_product, {
-        method: 'put', body: dataProduct,
+        method: 'put', body:JSON.stringify(dataProduct),
         headers: {
             'Content-Type': 'application/json'
         }

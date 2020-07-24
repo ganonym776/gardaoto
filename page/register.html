@@ -18,14 +18,12 @@
                 <div class="row">
                     <div class="col-lg-5 d-none d-lg-flex">
                         <div class="flex-grow-1 bg-register-image d-flex align-items-start justify-content-center"
-                            style="background-image: url(&quot;/img/dogs/image2.jpeg&quot;);"><button
-                                class="btn btn-primary mt-3" type="button"
-                                style="margin-top: 0;margin-right: 0px;">Upload</button></div>
+                            style="background-image: url(&quot;/img/dogs/image2.jpeg&quot;);"></div>
                     </div>
                     <div class="col-lg-7">
                         <div class="p-5">
                             <div class="text-center">
-                                <h4 class="text-dark mb-4">Create an Account!</h4>
+                                <h4 class="text-dark mb-4">Registrasi Team Baru!</h4>
                             </div>
                             <form role="form" class="user" action="/team" method="POST" id="createTeam"
                                 enctype="multipart/form-data">
@@ -39,7 +37,7 @@
                                             placeholder="Keterangan" name="Keterangan"
                                             style="margin: 1px;margin-top: 15px;">
                                         <div class="dropdown"
-                                            style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><select
+                                            style="margin-top: 18px;border-radius: 40px;"><select
                                                 class="btn btn-primary dropdown-toggle text-dark bg-white"
                                                 data-toggle="dropdown" aria-expanded="false" id="Posisi" name="Posisi"
                                                 placeholder="Posisi" type="item"
@@ -49,7 +47,7 @@
                                             </select>
                                         </div>
                                         <div class="dropdown"
-                                            style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><select
+                                            style="margin-top: 18px;border-radius: 40px;"><select
                                                 class="btn btn-primary dropdown-toggle text-dark bg-white"
                                                 data-toggle="dropdown" aria-expanded="false" id="Jurusan" name="Jurusan"
                                                 placeholder="jurusan" type="item"
@@ -63,7 +61,7 @@
                                             </select>
                                         </div>
                                         <div class="dropdown"
-                                            style="margin-top: 18px;border-radius: 40px;margin-left: 12px;"><select
+                                            style="margin-top: 18px;border-radius: 40px;"><select
                                                 class="btn btn-primary dropdown-toggle text-dark bg-white"
                                                 data-toggle="dropdown" aria-expanded="false" id="Kelas" name="Kelas"
                                                 placeholder="kelas" type="item"
@@ -84,9 +82,10 @@
                                 <div class="form-group row">
                                     <div class="col-sm-6 mb-3 mb-sm-0"><input class="form-control form-control-user"
                                             type="date" id="Tgl_lahir" placeholder="Tgl_lahir" name="Tgl_lahir"></div>
-                                    <input name="Foto" accept="image/*" type="file" id="Foto">
+                                            
+                                    <div class="col-sm-6 mb-3 mb-sm-0 d-flex align-items-center"><input name="Foto" accept="image/*" type="file" id="Foto"></div>
                                 </div><button class="btn btn-primary btn-block text-white btn-user"
-                                    type="submit">Register Teams</button>
+                                    type="submit" value="Upload">Register Teams</button>
                                 <hr>
                                 <hr>
                             </form>

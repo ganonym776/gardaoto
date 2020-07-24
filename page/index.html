@@ -332,8 +332,12 @@
 			.then(res => {
 				dataTim = document.getElementById('dataTim')
 				res.values.forEach(data => {
+					console.log(data)
+					data.Foto=data.Foto==null?'download.jpg':data.Foto;
 					dataTim.innerHTML += `<div class="Team-item">
-							<img class="img" src=`+ data.Foto + `>
+						<div class='rounded-class'>
+							<img class="img" src="/img/uploads/`+data.Foto+`" >
+</div>
 							<h2>`+ data.Nama + `</h2>
 							<h3>`+ data.Posisi + `</h3>
 							<p>`+ data.Keterangan + `</p>

@@ -51,8 +51,8 @@ ul, li{
 	padding-bottom: 10px;
   line-height: 20px;
   background: -webkit-gradient(linear, left top, left bottom, color-stop(30%, rgb(123, 115, 199)), to(rgb(120, 103, 196)));
-	background: -webkit-linear-gradient(top, rgb(123, 250, 140) 30%, rgb(84, 236, 122) 100%);
-	background: -o-linear-gradient(top, rgb(165, 32, 32) 30%, rgb(5, 173, 5) 100%);
+	background: -webkit-linear-gradient(top, rgb(224, 236, 247) 30%, rgb(214, 216, 250) 100%);
+	background: -o-linear-gradient(top, rgb(165, 32, 32) 30%, rgb(219, 225, 247) 100%);
 	background: transparent, linear-gradient(to bottom, #fff 30%, #fff 100%);
 	-webkit-background-clip: text;
 			background-clip: text;
@@ -133,7 +133,7 @@ ul, li{
 	letter-spacing: .5px;
 	font-size: 15px;
 	font-weight: 600;
-	color: rgb(7, 207, 84);
+	color: rgb(198, 231, 253);
 	padding: 25px 12px 25px 18px;
 	-webkit-transition: .4s;
 	-o-transition: .4s;
@@ -598,9 +598,10 @@ section{
 }
 .Team-item2 {
   margin-top: 100px;
-  height: 300px;
-  width:150px;
-	text-align: center;
+  height: 30%;
+  width:25%;
+  text-align: center;
+  display: block;
 	box-shadow: 0 0 0px #999;
 }
 .Team-item img .img2{
@@ -793,6 +794,12 @@ font-size: 20px;
 color: #fff;
 font-family: Arial, Helvetica, sans-serif;
 }
+.text-center h1{
+  color: white;
+}
+.text-center p{
+  color: white;
+}
 .jaminan .row > div{
 height: 25vw;
 position: relative;
@@ -823,8 +830,11 @@ top:5rem;
 z-index: -1;
 }
 .jumbotron{
-padding-top: 8rem;
-background-color: rgba(17, 33, 63, 0.048);
+padding-top: 4rem;
+background-color: rgba(106, 168, 248, 0.856);
+}
+.hd-color{
+  color: rgb(123, 115, 199);
 }
  .services .service {
 background: rgba(247, 253, 255, 0.973);
@@ -837,4 +847,22 @@ transition: box-shadow 0.7s ease-in-out;
 }
 .site-main .services .service:hover {
 box-shadow: var(--box-shadow);
+}
+.rounded-class{
+  width:100%;
+  height:65%;
+  background:rgb(197, 196, 196);
+  border-radius:50%;
+  overflow:hidden;
+  display: flex;
+  align-items: center;
+}
+.Team-item2 .rounded-class{
+  width:200px;
+  height:200px;
+  background:rgb(197, 196, 196);
+  border-radius:50%;
+  overflow:hidden;
+  display: flex;
+  align-items: center;
 }

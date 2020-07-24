@@ -173,22 +173,7 @@
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="row">
-                                <div class="col-12">
-                                    <nav
-                                        class="d-lg-flex justify-content-lg-end dataTables_paginate paging_simple_numbers">
-                                        <ul class="pagination">
-                                            <li class="page-item disabled"><a class="page-link" href="#"
-                                                    aria-label="Previous"><span aria-hidden="true">«</span></a></li>
-                                            <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                            <li class="page-item"><a class="page-link" href="#" aria-label="Next"><span
-                                                        aria-hidden="true">»</span></a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>
@@ -211,9 +196,10 @@
             .then(res => {
                 dataTeam = document.getElementById('dataTeam')
                 res.values.forEach(data => {
+                    data.Foto=data.Foto==null?'download.jpg':data.Foto;
                     dataTeam.innerHTML += `
                 <tr>
-				<td>`+ data.Foto +`</td>
+				<td><img class="rounded-class" src="/img/uploads/`+data.Foto+`" width="60px" height="60px"></td>
                 <td>`+ data.Nama + `</td>
                 <td>`+ data.Posisi + `</td>
                 <td>`+ data.Keterangan + `</td>
